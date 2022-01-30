@@ -32,7 +32,7 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
 
 * Express.js
 
-* FireBase (authentication, realtime database, timeStamp)
+* FireBase (authentication, firestore realtime database, timeStamp)
 
 * ReactFire 
 
