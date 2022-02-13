@@ -1,9 +1,5 @@
-let itineraryItemsDatabase = {
-  0: {
+let itineraryItemsDatabase = []
 
-  }
-}
+let toDoDatabase = []
 
-let toDoDatabase = {}
-
-export { itineraryItemsDatabase, toDoDatabase }
+export { itineraryItemsDatabase, toDoDatabase}
