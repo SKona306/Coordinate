@@ -11,3 +11,10 @@
 ## Saturday, 1/29
 
 * 2:00 - 4:00 Researched Firebase database, read quick start documentation for realtime databases, authentication and timeStamp and decided to use firebase instead of mongoDB for database.
+
+
+## Saturday 2/12
+
+* 2:00 -3:00 Watched video on firebase React full CRUD structure using React-Router-Dom, also read https://www.freecodecamp.org/news/how-to-build-a-todo-application-using-reactjs-and-firebase/ to see compare different ways to structure application
+
+* 3:00-3:40 Planned out and created component diagram for project 

@@ -14,7 +14,7 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
 
 * Users can share an itinerary, send to-do items, and other important information to group members. ( firebases real time database)
 
-* Users can make posts to the group (activity and hotel suggestions, post about upcoming weather, etc.). Posts can be up or down voted.
+* Users can make posts to the group (activity and hotel suggestions, post about upcoming weather, etc.). 
 
 * Itinerary will update when time-based events pass. (Firebase Timestamp )
 
@@ -28,9 +28,7 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
 
 * React
 
-* Node.js
-
-* Express.js
+* React-Router-DOM
 
 * FireBase (authentication, firestore realtime database, timeStamp)
 
@@ -38,7 +36,14 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
 
 * Material UI
 
+## Component Diagram
+
+![ComponentDiagram](capstone-component-diagram.drawio (1).png)
+
 ## Stretch Goals
+* Allow trip creator ability to see which group members have completed todo tasks.
+
+* give posts the ability to to be upvoted and down voted.
 
 * Create internal chat between users in same groups
 
