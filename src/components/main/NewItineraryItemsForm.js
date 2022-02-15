@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { itineraryItemsDatabase } from './StaticDatabase';
 
 const NewItineraryItemsForm = (props) => {
   const setFormVisible = props.formVisibleControl;
@@ -6,13 +7,17 @@ const NewItineraryItemsForm = (props) => {
   const [formValues, setFormValues] = useState([{label: '', category: '', details: '', day: '', time: '' }])
 
 
-  const handleFormSubmit = () => {
-
+  const handleFormSubmit = (event) => {
+    event.preventDefault()
+    formValues.forEach((element) => {
+      itineraryItemsDatabase.push(element);
+    });
+    setFormVisible(false)
   }
 
   const handleChange = (i, e) => {
-    let newFormValues = [...formValues];
-    newFormValues[i][e.target.name] = e.target.value;
+    let newFormValues = [...formValues]; 
+    newFormValues[i][e.target.name] = e.target.value; 
     setFormValues(newFormValues);
   }
     
@@ -35,32 +40,32 @@ const NewItineraryItemsForm = (props) => {
         <div className="form-inline" key={index}>
           <label>
             Label:
-            <input type='text' required onChange={e => handleChange(e, index)}/>
           </label>
+          <input type='text' name='label' value={element.label || ''} required onChange={e => handleChange(index, e)}/>
           <label>
             Category:
-            <input type='text' required onChange={e => handleChange(e, index)}/>
           </label>
+          <input type='text' name='category' value={element.category || ''} required onChange={e => handleChange(index,e)}/>
           <label>
             Details:
-            <textarea required onChange={e => handleChange(e, index)}/>
+            <textarea required name='details' value={element.details || ''} onChange={e => handleChange(index,e)}/>
           </label>
           <label>
             Day:
-            <input type='date' required onChange={e => handleChange(e, index)}/>
+            <input type='date' name='day' value={element.day || ''} required onChange={e => handleChange(index,e)}/>
           </label>
           <label>
             Time:
-            <input type='time' required onChange={e => handleChange(e, index)}/>
+            <input type='time' name='time' value={element.time || ''} required onChange={e => handleChange(index,e)}/>
           </label>
           {
             index ? 
-              <button type="button"  className="button remove" onClick={() => removeFormFields(index)}>Remove</button> 
+              <button type="button" className="button remove" onClick={() => removeFormFields(index)}>Remove</button> 
             : null
           }
         </div>
       ))}
-        <button onClick={addFormFields}>Add Field</button>
+        <button onClick={() => addFormFields()}>Add Field</button>
         <button type='submit'>Submit Itinerary</button>
       </form>
     </React.Fragment>
