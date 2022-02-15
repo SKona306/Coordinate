@@ -31,6 +31,10 @@ const NewItineraryItemsForm = (props) => {
     setFormValues(newFormValues)
   }
 
+  const handleHomeClick = () => {
+    setFormVisible(false)
+  }
+
   return (
     <React.Fragment>
       <h1>Itinerary Form</h1>
@@ -68,6 +72,7 @@ const NewItineraryItemsForm = (props) => {
         <button onClick={() => addFormFields()}>Add Field</button>
         <button type='submit'>Submit Itinerary</button>
       </form>
+      <button onClick={handleHomeClick}>Dashboard</button>
     </React.Fragment>
   )
 }
