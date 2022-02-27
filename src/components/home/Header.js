@@ -52,7 +52,7 @@ const Header = () => {
                 <div className='description-card' style={styles.descriptionCard}>
                   <h1 style={{marginBottom: '0.5rem'}}>Relaxation Reimagined</h1>
                   <h3 style={{width: '50%', margin: '0', textAlign: 'center'}}>At Coordinate we strive to maximize your relaxation time by taking care of the details. Join us in our mission to create a more relaxed world! </h3>
-                  <Button variant='contained' sx={{margin: '1.5rem', backgroundColor: '#F39189'}}>Sign Up</Button>
+                  <Button variant='contained' color='secondary' sx={{margin: '1.5rem', backgroundColor: '#F39189'}}>Sign Up</Button>
                 </div>
               </Container>
           </Paper>
