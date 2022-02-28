@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material'
+import { Container, Grid, Paper} from '@mui/material'
 import React from 'react'
 import './SplashPage.css'
 
@@ -33,6 +33,11 @@ const SplashPage = () => {
             <p>Sit back and Relax we will take care of it from here!</p>
           </Grid>
         </Grid>
+        </div>
+        <div className='mission-statement'>
+          <Paper elevation={0}>
+            <h1 style={{textAlign: 'center'}}>Our Mission</h1>
+          </Paper>
         </div>
       </Container>
     </React.Fragment>
