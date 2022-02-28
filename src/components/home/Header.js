@@ -1,17 +1,18 @@
 import { Button, Container, CssBaseline, Paper, Box, AppBar, Toolbar, Typography  } from '@mui/material'
 import React from 'react'
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import splashpagebackground from '../../assets/images/splashpageBG.jpg'
 const Header = () => {
 
   const styles = {
     paperBackgroundImage : {
       backgroundImage: `url(${splashpagebackground})`,
-      height: '50vh',
+      height: 'auto',
       width: '100vw',
+      paddingBottom:"5rem",
+      paddingTop: '2rem',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      alignContent: 'center'
     },
     centerElements : {
       display: 'flex',
