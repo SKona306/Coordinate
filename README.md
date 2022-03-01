@@ -19,4 +19,8 @@
 
 * 3:20-4:00 Planned out and created component diagram for project
 
+## Sunday 2/27
+
+* 9:30-1:00 Watched multiple videos on how to use MUI for styling. Specifically looking at how to use container, paper, card and other styled components and how to add custom css properties. Read through MUI docs to 
+
 
