@@ -1,4 +1,5 @@
 import React from 'react';
+import Signup from './components/auth/Signup';
 import Footer from './components/home/Footer';
 import Header from './components/home/Header';
 import SplashPage from './components/home/SplashPage';
@@ -12,6 +13,7 @@ function App() {
       <SplashPage />
       {/* <Dashboard /> */}
       <Footer />
+      <Signup />
     </div>
   );
 }
