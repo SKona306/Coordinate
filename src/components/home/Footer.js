@@ -12,6 +12,7 @@ const Footer = () => {
         bgcolor="#6E7582"
         color="white"
         height='auto'
+        
       >
         <Container maxWidth="lg">
           <Grid container spacing={5}>
