@@ -1,8 +1,15 @@
-import { Button, Container, Paper, TextField, Typography } from '@mui/material'
-import React from 'react'
+import { Button, Container, Paper, TextField, Typography, Alert } from '@mui/material'
+import React, {useRef, useState} from 'react'
 import signupBG from '../../assets/images/signupBG.jpg'
+import { useAuth } from '../../contexts/AuthContext';
 
 const Signup = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+  const {signup} = useAuth();
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const styles = {
     signupWrapper: {
@@ -17,6 +24,24 @@ const Signup = () => {
       alignItems: 'center'
     }
   }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return setError('Passwords do not match')
+    }
+
+    try {
+      setError('')
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError('Failed to create an account')
+    }
+    setLoading(false)
+  }
+
   return (
     <>
       <div className='sign-up-wrapper' style={styles.signupWrapper}>
@@ -26,21 +51,22 @@ const Signup = () => {
             <Typography variant='h4' mt={0} pt={0} sx={{textAlign: 'center'}}>
               <h1>Sign Up</h1>
             </Typography>
+            {error && <Alert severity="error" sx={{margin: '1rem', marginTop: '0'}}>{error}</Alert>}
               <form>
                 <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
                   Email:
                 </Typography>
-                <TextField fullWidth required label='Email' sx={{marginBottom: '1rem'}}/>
+                <TextField fullWidth required label='Email' type='email' ref={emailRef} sx={{marginBottom: '1rem'}}/>
                 <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
                   Password:
                 </Typography>
-                <TextField fullWidth required label='Password' sx={{marginBottom: '1rem'}}/>
+                <TextField fullWidth required label='Password' type='password' ref={passwordRef} sx={{marginBottom: '1rem'}}/>
                 <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
                   Password Confirmation:
                 </Typography>
-                <TextField fullWidth required label='Confirm Password' />
+                <TextField fullWidth required label='Confirm Password' type='password' ref={confirmPasswordRef} />
                 <br />
-                <Button variant='contained' color='secondary'  sx={{backgroundColor: '#F39189', marginTop: '1rem', width: '100%'}}>Register</Button>
+                <Button variant='contained' color='secondary' onClick={handleSubmit} disabled={loading} sx={{backgroundColor: '#F39189', marginTop: '1rem', width: '100%'}}>Register</Button>
             </form>
           </div>
           </Paper>
