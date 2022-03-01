@@ -7,12 +7,12 @@ const Header = () => {
     paperBackgroundImage : {
       backgroundImage: `url(${splashpagebackground})`,
       height: 'auto',
+      minHeight: '60vh',
       width: '100vw',
       paddingBottom:"5rem",
       paddingTop: '2rem',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      alignContent: 'center'
+      backgroundSize: 'cover'
     },
     centerElements : {
       display: 'flex',
@@ -24,7 +24,8 @@ const Header = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      color: 'white'
+      color: 'white',
+      margin: '0.5rem'
     }
   }
 
@@ -56,10 +57,9 @@ const Header = () => {
                   <Button variant='contained' color='secondary' sx={{margin: '1.5rem', backgroundColor: '#F39189'}}>Sign Up</Button>
                 </div>
               </Container>
-          </Paper>
-            </Container>
+            </Paper>
+          </Container>
         </Paper>
-        
       </div>
     </React.Fragment>
   )
