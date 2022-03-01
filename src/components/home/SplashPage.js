@@ -1,21 +1,47 @@
-import { Container, Grid, Paper} from '@mui/material'
+import { Container, Grid, Paper, CssBaseline} from '@mui/material'
 import React from 'react'
 import './SplashPage.css'
+import secondBG from '../../assets/images/secondSplashpageBG.jpg'
 
 
 const SplashPage = () => {
 
+
+  const styles = {
+    paperBackgroundImage : {
+      backgroundImage: `url(${secondBG})`,
+      height: 'auto',
+      minHeight: '58vh',
+      width: '100vw',
+      paddingBottom:"5rem",
+      paddingTop: '2rem',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'
+    },
+    centerElements : {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    descriptionCard: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      color: 'white'
+    }
+  }
   return (
     <React.Fragment>
-      <Container>
+      <Container style={{minHeight: '50vh'}}>
         <div className='lines'>
-          <h2 style={{textAlign: 'center', fontSize: '2.5rem', margin: '0.5rem'}}>How Coordinate Works</h2>
+          <h2 style={{textAlign: 'center', fontSize: '2.5rem', marginTop: '4rem'}}>How Coordinate Works</h2>
         </div>
         <div className='sub-title'>
-          <h2 style={{textAlign: 'center', margin: '2rem'}}>You are just four easy steps away from relaxation!</h2>
+          <h2 style={{textAlign: 'center', margin: '2rem', marginLeft: '1.5rem'}}>You are just four easy steps away from maximizing your relaxation!</h2>
         </div>
         <div className='steps-cards'>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} style={{marginBottom: '4rem'}}>
           <Grid item xs={3}>
             <h1 style={{color: '#F39189'}}>Step One</h1>
             <p>If you have an upcoming trip or are looking to plan a future trip, sign up for coordinate and let us take care of the details.</p>
@@ -34,12 +60,22 @@ const SplashPage = () => {
           </Grid>
         </Grid>
         </div>
-        <div className='mission-statement'>
-          <Paper elevation={0}>
-            <h1 style={{textAlign: 'center'}}>Our Mission</h1>
-          </Paper>
-        </div>
       </Container>
+      <div className='splash-page-main'>
+        <CssBaseline />
+        <Paper style={styles.paperBackgroundImage} square>
+          <Container style={styles.centerElements}>
+            <Paper style={{marginTop: '6rem', background: "linear-gradient(150deg, #046582, #6b73a9, #c17aa8, #f39189)"}}>
+              <Container>
+                <div className='description-card' style={styles.descriptionCard}>
+                  <h1 style={{marginBottom: '0.5rem'}}>Our Mission</h1>
+                  <h3 style={{width: '50%', marginTop: '0', textAlign: 'center'}}>We here at coordinate believe that life is stressful as is and you shouldn't have to worry about the details when you are one vacaction. Thats where we come in, help us help you make the most of your trip. We strive to create an experience that maximizes your total down time. </h3>
+                </div>
+              </Container>
+            </Paper>
+          </Container>
+        </Paper>
+      </div>
     </React.Fragment>
   )
 }
