@@ -5,11 +5,13 @@ import Footer from './components/home/Footer';
 import Header from './components/home/Header';
 import SplashPage from './components/home/SplashPage';
 import Dashboard from './components/main/Dashboard';
+import AuthProvider from './contexts/AuthContext';
 
 
 function App() {
   return (
-    <div className="App">
+    <AuthProvider>
+      <div className="App">
       <Header />
       <SplashPage />
       {/* <Dashboard /> */}
@@ -17,6 +19,8 @@ function App() {
       <Signup />
       <Login />
     </div>
+    </AuthProvider>
+    
   );
 }
 
