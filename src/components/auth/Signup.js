@@ -25,13 +25,11 @@ const Signup = () => {
     }
   }
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-
+  const handleSubmit = async() => {
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setError('Passwords do not match')
     }
-
+    
     try {
       setError('')
       setLoading(true)
@@ -48,23 +46,23 @@ const Signup = () => {
         <Container style={{width: '35vw'}}>
           <Paper variant='outlined' style={{height: 'auto', maxWidth: '600px'}} className='sign-up-form'>
             <div style={{display: 'flex', flexDirection: 'column', alignContent: 'center', margin: '1rem'}}>
-            <Typography variant='h4' mt={0} pt={0} sx={{textAlign: 'center'}}>
-              <h1>Sign Up</h1>
+            <Typography variant='h1' pt={0} sx={{textAlign: 'center', fontSize: '5rem', margin: '2rem'}}>
+              Sign Up
             </Typography>
             {error && <Alert severity="error" sx={{margin: '1rem', marginTop: '0'}}>{error}</Alert>}
               <form>
                 <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
                   Email:
                 </Typography>
-                <TextField fullWidth required label='Email' type='email' ref={emailRef} sx={{marginBottom: '1rem'}}/>
+                <TextField fullWidth required label='Email' type='email' inputRef={emailRef} sx={{marginBottom: '1rem'}}/>
                 <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
                   Password:
                 </Typography>
-                <TextField fullWidth required label='Password' type='password' ref={passwordRef} sx={{marginBottom: '1rem'}}/>
+                <TextField fullWidth required label='Password' type='password' inputRef={passwordRef} sx={{marginBottom: '1rem'}}/>
                 <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
                   Password Confirmation:
                 </Typography>
-                <TextField fullWidth required label='Confirm Password' type='password' ref={confirmPasswordRef} />
+                <TextField fullWidth required label='Confirm Password' type='password' inputRef={confirmPasswordRef} />
                 <br />
                 <Button variant='contained' color='secondary' onClick={handleSubmit} disabled={loading} sx={{backgroundColor: '#F39189', marginTop: '1rem', width: '100%'}}>Register</Button>
             </form>
