@@ -5,7 +5,7 @@ import splashpagebackground from '../../assets/images/splashpageBG.jpg'
 
 
 const Header = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const styles = {
     paperBackgroundImage : {
@@ -43,8 +43,8 @@ const Header = () => {
               <h1 style={{fontSize: '3rem', fontFamily: "'Pacifico', cursive", padding: '0', margin:'5px'}}>Coordinate</h1>
             </div>
           </Typography>
-          <Button color="inherit" sx={{backgroundColor: '#F39189'}} >Sign Up</Button>
-          <Button color="inherit" >Login</Button>
+          <Button color="inherit" sx={{backgroundColor: '#F39189'}} onClick={() => navigate("/signup")} >Sign Up</Button>
+          <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
@@ -58,7 +58,7 @@ const Header = () => {
                 <div className='description-card' style={styles.descriptionCard}>
                   <h1 style={{marginBottom: '0.5rem'}}>Relaxation Reimagined</h1>
                   <h3 style={{width: '50%', margin: '0', textAlign: 'center'}}>At Coordinate we strive to maximize your relaxation time by taking care of the details. Join us in our mission to create a more relaxed world! </h3>
-                  <Button variant='contained' color='secondary' sx={{margin: '1.5rem', backgroundColor: '#F39189'}} >Sign Up</Button>
+                  <Button variant='contained' color='secondary' sx={{margin: '1.5rem', backgroundColor: '#F39189'}} onClick={() => navigate("/signup")}>Sign Up</Button>
                 </div>
               </Container>
             </Paper>

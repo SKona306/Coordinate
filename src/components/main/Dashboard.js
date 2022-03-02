@@ -9,13 +9,13 @@ const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);
   const [error, setError] = useState('')
   const { logout } = useAuth()
-  // let navigate = useNavigate()
+  let navigate = useNavigate()
 
 
   const handleClick = async() => {
     try {
       await logout()
-      // navigate("/")
+      navigate("/")
     } catch {
       setError('Failed to logout')
     }
