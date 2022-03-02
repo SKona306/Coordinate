@@ -7,8 +7,6 @@ import Footer from './Footer'
 
 
 const SplashPage = () => {
-
-
   const styles = {
     paperBackgroundImage : {
       backgroundImage: `url(${secondBG})`,
