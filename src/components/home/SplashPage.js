@@ -2,6 +2,8 @@ import { Container, Grid, Paper, CssBaseline} from '@mui/material'
 import React from 'react'
 import './SplashPage.css'
 import secondBG from '../../assets/images/secondSplashpageBG.jpg'
+import Header from './Header'
+import Footer from './Footer'
 
 
 const SplashPage = () => {
@@ -33,6 +35,7 @@ const SplashPage = () => {
   }
   return (
     <React.Fragment>
+      <Header />
       <Container style={{minHeight: '50vh'}}>
         <div className='lines'>
           <h2 style={{textAlign: 'center', fontSize: '2.5rem', marginTop: '4rem'}}>How Coordinate Works</h2>
@@ -76,6 +79,7 @@ const SplashPage = () => {
           </Container>
         </Paper>
       </div>
+      <Footer />
     </React.Fragment>
   )
 }
