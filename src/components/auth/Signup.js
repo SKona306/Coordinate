@@ -21,7 +21,8 @@ const Signup = () => {
       height: '100vh',
       width: '100vw',
       justifyContent:'center', 
-      alignItems: 'center'
+      alignItems: 'center',
+      padding: '2rem'
     }
   }
 
@@ -44,7 +45,7 @@ const Signup = () => {
     <>
       <div className='sign-up-wrapper' style={styles.signupWrapper}>
         <Container style={{width: '35vw'}}>
-          <Paper variant='outlined' style={{height: 'auto', maxWidth: '600px'}} className='sign-up-form'>
+          <Paper variant='outlined' style={{height: 'auto', maxWidth: '600px', minWidth:'450px'  , maxHeight: '650px', }} className='sign-up-form'>
             <div style={{display: 'flex', flexDirection: 'column', alignContent: 'center', margin: '1rem'}}>
             <Typography variant='h1' pt={0} sx={{textAlign: 'center', fontSize: '5rem', margin: '2rem'}}>
               Sign Up
@@ -66,13 +67,11 @@ const Signup = () => {
                 <br />
                 <Button variant='contained' color='secondary' onClick={handleSubmit} disabled={loading} sx={{backgroundColor: '#F39189', marginTop: '1rem', width: '100%'}}>Register</Button>
             </form>
-          </div>
-          </Paper>
-          <div className='account'>
             <Typography variant='subtitle1' sx={{textAlign: 'center', color: 'black'}}>
               Already have an account? Log In
             </Typography>
           </div>
+          </Paper>
         </Container>
         
       </div>

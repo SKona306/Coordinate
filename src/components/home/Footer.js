@@ -12,6 +12,7 @@ const Footer = () => {
         bgcolor="#6E7582"
         color="white"
         height='auto'
+        width='100vw'
         
       >
         <Container maxWidth="lg">
