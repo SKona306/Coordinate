@@ -17,7 +17,6 @@ function App() {
         <Signup />
       </div>
     </AuthProvider>
-    
   );
 }
 
