@@ -1,4 +1,5 @@
 import { Button, Container, Paper, TextField, Typography, Alert } from '@mui/material'
+import { Link } from 'react-router-dom';
 import React, {useRef, useState} from 'react'
 import signupBG from '../../assets/images/signupBG.jpg'
 import { useAuth } from '../../contexts/AuthContext';
@@ -22,7 +23,8 @@ const Signup = () => {
       width: '100vw',
       justifyContent:'center', 
       alignItems: 'center',
-      padding: '2rem'
+      margin: '0',
+      padding: '0'
     }
   }
 
@@ -68,7 +70,7 @@ const Signup = () => {
                 <Button variant='contained' color='secondary' onClick={handleSubmit} disabled={loading} sx={{backgroundColor: '#F39189', marginTop: '1rem', width: '100%'}}>Register</Button>
             </form>
             <Typography variant='subtitle1' sx={{textAlign: 'center', color: 'black'}}>
-              Already have an account? Log In
+              Already have an account? <Link to="/login">Log In</Link>
             </Typography>
           </div>
           </Paper>
