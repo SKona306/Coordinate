@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Footer from './components/home/Footer';
 import Header from './components/home/Header';
@@ -14,6 +15,7 @@ function App() {
       {/* <Dashboard /> */}
       <Footer />
       <Signup />
+      <Login />
     </div>
   );
 }
