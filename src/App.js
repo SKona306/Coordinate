@@ -5,7 +5,7 @@ import Dashboard from './components/main/Dashboard';
 import AuthProvider from './contexts/AuthContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/auth/Login';
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
@@ -17,7 +17,12 @@ function App() {
           <Route path="/" element={<SplashPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" 
+            element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+            } />
         </Routes>
       </AuthProvider>
     </Router>
