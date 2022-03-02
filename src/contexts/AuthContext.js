@@ -43,7 +43,7 @@ const AuthProvider = ({children}) => {
 // issue with logic below is that it does not deal with authentication correctly
   return (
     <AuthContext.Provider value={value}>
-      { children} 
+      { children } 
     </AuthContext.Provider>
   )
 }
