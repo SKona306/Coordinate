@@ -10,7 +10,6 @@ export function useAuth() {
 
 const AuthProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
 
   const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -28,7 +27,6 @@ const AuthProvider = ({children}) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if(user) {
         setCurrentUser(user)
-        setLoading(false)
       }
     })
     return unsubscribe
