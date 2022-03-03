@@ -6,6 +6,7 @@ import AuthProvider from './contexts/AuthContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/auth/Login';
 import PrivateRoute from './components/PrivateRoute';
+import Header from './components/home/Header';
 
 
 function App() {

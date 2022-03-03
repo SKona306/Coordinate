@@ -42,7 +42,7 @@ const Footer = () => {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Contact Us</Box>
               <Box>
-                <p><EmailIcon /> CoordinateUS@coordiante.io</p>
+                <p><EmailIcon />  CoordinateUS@coordiante.io</p>
               </Box>
               <Box>
                 <p><PhoneIcon /> +1(352)-182-1885</p>
