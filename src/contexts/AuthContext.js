@@ -40,7 +40,7 @@ const AuthProvider = ({children}) => {
     login,
     logout
   }
-// issue with logic below is that it does not deal with authentication correctly
+  
   return (
     <AuthContext.Provider value={value}>
       { children } 

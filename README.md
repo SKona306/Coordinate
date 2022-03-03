@@ -21,6 +21,17 @@
 
 ## Sunday 2/27
 
-* 9:30-1:00 Watched multiple videos on how to use MUI for styling. Specifically looking at how to use container, paper, card and other styled components and how to add custom css properties. Read through MUI docs to 
+* 9:30-1:00 Watched multiple videos on how to use MUI for styling. Specifically looking at how to use container, paper, card and other styled components and how to add custom css properties. Read through MUI docs to see how to customize css of pre made components. link: https://www.youtube.com/watch?v=Xoz31I1FuiY , https://www.youtube.com/watch?v=o1chMISeTC0
 
 
+## Monday 2/28
+
+* 4:00-4:45: Watched video on how to setup firebase authentication using a custom auth context to store current user and using react router with private routes. link: https://www.youtube.com/watch?v=PKwu15ldZ7k
+
+* 4:45-5:15: Watched youtube video explaining how the new syntax for version 6 speicifically focusing on how useHistory has changed to useNavigate and Switch is changed to Routes. https://www.youtube.com/watch?v=UjHT_NKR_gU
+
+## Wednesday 3/2
+
+* 7-7:30: Read log rocket article which shows how to create a user profile in the database as soon as the user registers with the app. link: https://blog.logrocket.com/user-authentication-firebase-react-apps/
+
+* 7:30-8:30: read firebase documentation to make sure that nosql will work for project. Decided to use firestore with by referencing other collections. Will need to find a solution for child parent delete functionality found in sql. Designed Database schema using Lucid. 
