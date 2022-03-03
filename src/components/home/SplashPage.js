@@ -7,30 +7,7 @@ import Footer from './Footer'
 
 
 const SplashPage = () => {
-  const styles = {
-    paperBackgroundImage : {
-      backgroundImage: `url(${secondBG})`,
-      height: 'auto',
-      minHeight: '58vh',
-      width: '100vw',
-      paddingBottom:"5rem",
-      paddingTop: '2rem',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
-    },
-    centerElements : {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    descriptionCard: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      color: 'white'
-    }
-  }
+
   return (
     <React.Fragment>
       <Header />
@@ -64,11 +41,11 @@ const SplashPage = () => {
       </Container>
       <div className='splash-page-main'>
         <CssBaseline />
-        <Paper style={styles.paperBackgroundImage} square>
-          <Container style={styles.centerElements}>
+        <Paper className='paperBackgroundImage' square>
+          <Container className='centerElements' >
             <Paper style={{marginTop: '6rem', background: "linear-gradient(150deg, #046582, #6b73a9, #c17aa8, #f39189)"}}>
               <Container>
-                <div className='description-card' style={styles.descriptionCard}>
+                <div className='description-card'>
                   <h1 style={{marginBottom: '0.5rem'}}>Our Mission</h1>
                   <h3 style={{width: '50%', marginTop: '0', textAlign: 'center'}}>We here at coordinate believe that life is stressful as is and you shouldn't have to worry about the details when you are one vacaction. Thats where we come in, help us help you make the most of your trip. We strive to create an experience that maximizes your total down time. </h3>
                 </div>
