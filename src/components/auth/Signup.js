@@ -1,6 +1,6 @@
 import { Button, Container, Paper, TextField, Typography, Alert } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom';
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import signupBG from '../../assets/images/signupBG.jpg'
 import { useAuth } from '../../contexts/AuthContext';
 import {addDoc, collection} from 'firebase/firestore'
@@ -56,9 +56,12 @@ const Signup = () => {
     }
     setLoading(false)
   }
+  
+  useEffect(() => {
     if(currentUser) {
       navigate("/dashboard")
     }
+  })
   return (
     <>
       <div className='sign-up-wrapper' style={styles.signupWrapper}>

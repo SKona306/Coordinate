@@ -11,9 +11,11 @@ const SplashPage = () => {
   const { currentUser } = useAuth()
   const navigate = useNavigate();
 
-  if(currentUser) {
-    navigate("/dashboard")
-  }  
+  useEffect(() => {
+    if(currentUser) {
+      navigate("/dashboard")
+    }
+  })
 
   return (
     <React.Fragment>

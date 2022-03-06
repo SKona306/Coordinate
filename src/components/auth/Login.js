@@ -1,6 +1,6 @@
 import { Button, Container, Paper, TextField, Typography, Alert } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom';
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import signupBG from '../../assets/images/signupBG.jpg'
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -28,20 +28,25 @@ const Login = () => {
     }
   }
 
+  useEffect(() => {
+    if(currentUser) {
+      navigate("/dashboard")
+    }
+  })
+  
+
   const handleSubmit = async() => {
     try {
       setError('')
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      if(currentUser) navigate('/dashboard')
     } catch {
       setError('Failed to login')
     }
     setLoading(false)
   }
-  if(currentUser) {
-    navigate("/dashboard")
-  }
+
+  
   
   return (
     <>

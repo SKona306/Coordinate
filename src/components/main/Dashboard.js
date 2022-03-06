@@ -1,5 +1,5 @@
 import { Alert, Button } from '@mui/material';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Itinerary from './Itinerary';
 import NewItineraryItemsForm from './NewItineraryItemsForm';
 import { useAuth } from '../../contexts/AuthContext';
@@ -8,13 +8,14 @@ import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);
   const [error, setError] = useState('')
-  const { logout } = useAuth()
+  const { logout, currentUser } = useAuth()
   let navigate = useNavigate()
+
+  console.log(currentUser)
 
   const handleClick = async() => {
     try {
       await logout()
-      navigate("/")
     } catch {
       setError('Failed to logout')
     }
@@ -23,6 +24,12 @@ const Dashboard = () => {
   const handleAddItineraryClick = () => {
     setitineraryFormPageVisble(true);
   }
+
+  useEffect(() => {
+    if(!currentUser) {
+      navigate("/")
+    }
+  }) 
 
     if(itineraryFormPageVisible === true) {
       return (
