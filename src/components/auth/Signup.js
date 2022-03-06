@@ -1,8 +1,11 @@
 import { Button, Container, Paper, TextField, Typography, Alert } from '@mui/material'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, {useRef, useState} from 'react'
 import signupBG from '../../assets/images/signupBG.jpg'
 import { useAuth } from '../../contexts/AuthContext';
+import {addDoc, collection} from 'firebase/firestore'
+import { db } from '../../services/firebase';
+
 
 const Signup = () => {
   const emailRef = useRef();
@@ -11,6 +14,7 @@ const Signup = () => {
   const {signup} = useAuth();
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
 
   const styles = {
     signupWrapper: {
@@ -36,9 +40,19 @@ const Signup = () => {
     try {
       setError('')
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
-    } catch {
-      setError('Failed to create an account')
+      const res = await signup(emailRef.current.value, passwordRef.current.value)
+      const user = res.user
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        name: '',
+        email: user.email,
+        trips: [],
+        friendsList: [],
+        friendRequests: []
+      })
+      navigate('/dashboard')
+    } catch(error) {
+      setError(error.message);
     }
     setLoading(false)
   }
