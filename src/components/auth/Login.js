@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, {useRef, useState, useEffect} from 'react'
 import signupBG from '../../assets/images/signupBG.jpg'
 import { useAuth } from '../../contexts/AuthContext';
+import './AuthStyles.css'
 
 const Login = () => {
   const emailRef = useRef();

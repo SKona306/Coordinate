@@ -5,6 +5,7 @@ import signupBG from '../../assets/images/signupBG.jpg'
 import { useAuth } from '../../contexts/AuthContext';
 import {addDoc, collection} from 'firebase/firestore'
 import { db } from '../../services/firebase';
+import './AuthStyles.css'
 
 
 const Signup = () => {
@@ -56,7 +57,7 @@ const Signup = () => {
     }
     setLoading(false)
   }
-  
+
   useEffect(() => {
     if(currentUser) {
       navigate("/dashboard")
