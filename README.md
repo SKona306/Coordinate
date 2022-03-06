@@ -35,3 +35,7 @@
 * 7-7:30: Read log rocket article which shows how to create a user profile in the database as soon as the user registers with the app. link: https://blog.logrocket.com/user-authentication-firebase-react-apps/
 
 * 7:30-8:30: read firebase documentation to make sure that nosql will work for project. Decided to use firestore with by referencing other collections. Will need to find a solution for child parent delete functionality found in sql. Designed Database schema using Lucid. 
+
+## Sunday 3/6 
+
+9:30-12:00: watch youtube videos about cleanup function for useEffect hook. also looked at some documentation to determine how to fix the memory leak in the application that is a result of the useEffect and onAuthStateChanged method. links: https://www.loginradius.com/blog/async/how-to-fix-memory-leaks-in-react/, https://www.youtube.com/watch?v=0ZJgIjIuY7U, https://www.youtube.com/watch?v=gv9ugDJ1ynU, https://www.youtube.com/watch?v=UVhIMwHDS7k
