@@ -44,11 +44,10 @@ const Dashboard = () => {
     } else {
       fetchUserData(currentUser.uid)
     }
-  }, []) 
+  }, [currentUser]) 
 
-  
-
-  if(user.name === '') {
+  console.log(user)
+  if(currentUser) { //when ready for production add: && user.name === ''
     return (
       <ProfileCreateForm />
     )
