@@ -1,7 +1,6 @@
 import { Container, Grid, Paper, CssBaseline} from '@mui/material'
 import React from 'react'
 import './SplashPage.css'
-import secondBG from '../../assets/images/secondSplashpageBG.jpg'
 import Header from './Header'
 import Footer from './Footer'
 

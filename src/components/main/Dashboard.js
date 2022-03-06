@@ -2,7 +2,7 @@ import { Alert, Button } from '@mui/material';
 import React, { useState } from 'react'
 import Itinerary from './Itinerary';
 import NewItineraryItemsForm from './NewItineraryItemsForm';
-import { useAuth  } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -10,7 +10,6 @@ const Dashboard = () => {
   const [error, setError] = useState('')
   const { logout } = useAuth()
   let navigate = useNavigate()
-
 
   const handleClick = async() => {
     try {
