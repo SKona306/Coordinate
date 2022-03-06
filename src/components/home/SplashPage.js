@@ -1,11 +1,19 @@
 import { Container, Grid, Paper, CssBaseline} from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './SplashPage.css'
 import Header from './Header'
 import Footer from './Footer'
+import { useAuth } from '../../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 
 const SplashPage = () => {
+  const { currentUser } = useAuth()
+  const navigate = useNavigate();
+
+  if(currentUser) {
+    navigate("/dashboard")
+  }  
 
   return (
     <React.Fragment>

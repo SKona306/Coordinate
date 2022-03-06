@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/AuthContext';
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, currentUser } = useAuth();
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   let navigate = useNavigate();
@@ -33,13 +33,16 @@ const Login = () => {
       setError('')
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      navigate('/dashboard')
+      if(currentUser) navigate('/dashboard')
     } catch {
       setError('Failed to login')
     }
     setLoading(false)
   }
-
+  if(currentUser) {
+    navigate("/dashboard")
+  }
+  
   return (
     <>
       <div className='sign-up-wrapper' style={styles.signupWrapper}>

@@ -11,7 +11,7 @@ const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-  const {signup} = useAuth();
+  const {signup, currentUser} = useAuth();
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
@@ -56,7 +56,9 @@ const Signup = () => {
     }
     setLoading(false)
   }
-
+    if(currentUser) {
+      navigate("/dashboard")
+    }
   return (
     <>
       <div className='sign-up-wrapper' style={styles.signupWrapper}>
