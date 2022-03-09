@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { query, collection, where, getDocs } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import ProfileCreateForm from './ProfileCreateForm';
+import MainHeader from './MainHeader';
 
 const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);
@@ -47,11 +48,11 @@ const Dashboard = () => {
   }, [currentUser]) 
 
 
-  if(currentUser && user.name === '') { //when ready for production add: && user.name === ''
-    return (
-      <ProfileCreateForm />
-    )
-  }
+  // if(currentUser && user.name === '') { //when ready for production add: && user.name === ''
+  //   return (
+  //     <ProfileCreateForm />
+  //   )
+  // }
 
   if(itineraryFormPageVisible === true) {
     return (
@@ -62,6 +63,7 @@ const Dashboard = () => {
   } else {
     return (
       <React.Fragment>
+        <MainHeader />
         {error && <Alert variant='error'>{error}</Alert>}
         <Itinerary />
         <button className='addItineraryItem' onClick={handleAddItineraryClick}>Add Iteneray Items</button>
