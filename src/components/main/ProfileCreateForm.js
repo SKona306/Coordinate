@@ -1,5 +1,5 @@
 import { Container, Paper, TextField, Typography, Button, Alert } from '@mui/material'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import './ProfileCreateForm.css'
 import { doc, updateDoc } from 'firebase/firestore';
@@ -10,8 +10,6 @@ const ProfileCreateForm = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const { currentUser } = useAuth()
-  // const nameRef = useRef();
-  // const emailRef = useRef();
   const [error, setError] = useState('')
 
   const handleClick = async() => {
