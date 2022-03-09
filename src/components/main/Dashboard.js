@@ -46,8 +46,8 @@ const Dashboard = () => {
     }
   }, [currentUser]) 
 
-  console.log(user)
-  if(currentUser) { //when ready for production add: && user.name === ''
+
+  if(currentUser && user.name === '') { //when ready for production add: && user.name === ''
     return (
       <ProfileCreateForm />
     )
