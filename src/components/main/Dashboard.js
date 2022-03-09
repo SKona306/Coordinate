@@ -11,6 +11,7 @@ import MainHeader from './MainHeader';
 
 const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);
+  const [ProfilePageVisible, setProfilePageVisible] = useState(false)
   const [error, setError] = useState('')
   const [user, setUser] = useState()
   const { logout, currentUser } = useAuth()
@@ -63,7 +64,8 @@ const Dashboard = () => {
   } else {
     return (
       <React.Fragment>
-        <MainHeader />
+        <MainHeader 
+          profileVisiblePage = {setProfilePageVisible}/>
         {error && <Alert variant='error'>{error}</Alert>}
         <Itinerary />
         <button className='addItineraryItem' onClick={handleAddItineraryClick}>Add Iteneray Items</button>
