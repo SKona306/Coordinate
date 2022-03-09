@@ -65,7 +65,7 @@ const Dashboard = () => {
     return (
       <React.Fragment>
         <MainHeader 
-          profileVisiblePage = {setProfilePageVisible}/>
+          profilePageVisible = {setProfilePageVisible}/>
         {error && <Alert variant='error'>{error}</Alert>}
         <Itinerary />
         <button className='addItineraryItem' onClick={handleAddItineraryClick}>Add Iteneray Items</button>
