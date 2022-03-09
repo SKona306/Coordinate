@@ -2,30 +2,31 @@ import { Container, Paper, TextField, Typography, Button, Alert } from '@mui/mat
 import React, { useRef, useState } from 'react'
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import './ProfileCreateForm.css'
-import { doc, where, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 
 const ProfileCreateForm = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const { currentUser } = useAuth()
-  const nameRef = useRef();
-  const emailRef = useRef();
+  // const nameRef = useRef();
+  // const emailRef = useRef();
   const [error, setError] = useState('')
 
   const handleClick = async() => {
+    console.log(email);
+    console.log(name)
     try {
-      const userRef = doc(db, "users", where("uid", "==", currentUser.uid))
+      const userRef = doc(db, "users", currentUser.uid);
       await updateDoc(userRef, {
-        name: nameRef,
-        email: emailRef
-      });
-      console.log("success")
+        email: email,
+        name: name
+      })
     }catch(error) {
       setError(error.message)
-      console.log(error)
     }
   }
-  
   return (
     <>
     <div className='center-form' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
@@ -42,11 +43,11 @@ const ProfileCreateForm = () => {
               <Typography variant='h6' >
               Name:  
               </Typography>
-              <TextField required type='text' fullWidth />
+              <TextField required type='text' onChange={(e) => setName(e.target.value)} fullWidth />
               <Typography variant = 'h6'>
                 Email: 
               </Typography>
-              <TextField required type='email' fullWidth placeholder={currentUser.email}/>
+              <TextField required type='email' fullWidth placeholder={currentUser.email} onChange={(e) => setEmail(e.target.value)}/>
               <Button variant='contained' color="secondary" fullWidth style={{marginTop: '1rem', marginBottom: '1rem'}} onClick={handleClick}>Create Profile</Button>
             </Container>
           </Paper>
