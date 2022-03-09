@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, {useRef, useState, useEffect} from 'react'
 import signupBG from '../../assets/images/signupBG.jpg'
 import { useAuth } from '../../contexts/AuthContext';
-import {addDoc, collection} from 'firebase/firestore'
+import { doc, setDoc} from 'firebase/firestore'
 import { db } from '../../services/firebase';
 import './AuthStyles.css'
 
@@ -43,7 +43,7 @@ const Signup = () => {
       setLoading(true)
       const res = await signup(emailRef.current.value, passwordRef.current.value)
       const user = res.user
-      await addDoc(collection(db, "users"), {
+      await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name: '',
         email: user.email,
