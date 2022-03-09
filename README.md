@@ -39,3 +39,13 @@
 ## Sunday 3/6 
 
 9:30-12:00: watch youtube videos about cleanup function for useEffect hook. also looked at some documentation to determine how to fix the memory leak in the application that is a result of the useEffect and onAuthStateChanged method. links: https://www.loginradius.com/blog/async/how-to-fix-memory-leaks-in-react/, https://www.youtube.com/watch?v=0ZJgIjIuY7U, https://www.youtube.com/watch?v=gv9ugDJ1ynU, https://www.youtube.com/watch?v=UVhIMwHDS7k
+
+## Tuesday 3/8
+
+11:00-12:00: Ran into an issue firestore database when user profile is created during signup the only id that is given is uid but the document id is randomly generated. This causes issues when using updateDoc firestore method as it requires the doc id instead of the uid created during signup. Watched youtube video playlist that covers v9 firestore syntax and the difference in using addDoc and setDoc. link: https://www.youtube.com/watch?v=ig91zc-ERSE&list=PLqFvlDFoiZ-2SAX7YXCYtb28K4IooCIlS 
+
+12:00-12:40: Read over firestore documentation that covers how to add data to firestore. Specifically looked at the difference between addDoc which generates a random id and setDoc which allows the developer to assign the specific id needed. This allowed me to set the document id as the user uid making querying later on in app easier. link: https://firebase.google.com/docs/firestore/manage-data/add-data#update-data
+
+7:40-8:00: watch youtube video explaining how attatch onclick functionality to mui icons. Link: https://www.youtube.com/watch?v=AVonkBWYeDU
+
+8:00-8:30: read documentation about buttonIcon which allows the developer to use an icon as a button. link: https://mui.com/api/icon-button/. Read github thread about how to add onClick event handler to icon button link: https://github.com/mui/material-ui/issues/1340

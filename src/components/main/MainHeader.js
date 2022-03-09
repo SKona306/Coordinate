@@ -1,9 +1,10 @@
 import React from 'react'
-import { Button, Box, Toolbar, Typography, AppBar  } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { Box, Toolbar, Typography, AppBar  } from '@mui/material'
+import PersonIcon from '@mui/icons-material/Person';
+import IconButton from '@mui/material/IconButton';
 
-const MainHeader = () => {
-  const navigate = useNavigate();
+
+const MainHeader = (props) => {
   return (
     <React.Fragment>
       <Box sx={{ flexGrow: 1 }}>
@@ -14,8 +15,10 @@ const MainHeader = () => {
               <h1 style={{fontSize: '3rem', fontFamily: "'Pacifico', cursive", padding: '0', margin:'5px'}}>Coordinate</h1>
             </div>
           </Typography>
-          <Button color="inherit" sx={{backgroundColor: '#F39189'}} onClick={() => navigate("/profile")} >Sign Up</Button>
-          <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
+          <IconButton
+            onClick={props.profilePageVisible}>
+            <PersonIcon sx={{fontSize: '40px', color: 'white'}} />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>
