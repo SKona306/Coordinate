@@ -14,10 +14,6 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
  
 * Users can share an itinerary, send to-do items, and other important information to group members. ( firebases real time database)
  
-* Users can make posts to the group (activity and hotel suggestions, post about upcoming weather, etc.).
- 
-* Itinerary will update when time-based events pass. (Firebase Timestamp )
- 
 ## Languages and Technologies
  
 * HTML
@@ -30,7 +26,7 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
  
 * React-Router-DOM
  
-* FireBase (authentication, firestore realtime database, timeStamp)
+* FireBase (authentication, firestore realtime database)
  
 * ReactFire
  
@@ -54,10 +50,12 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
 * Connect Flight Tracker API for real time flight status
  
 * Include Google Maps API (Iframe) for search functionality of the area.
- 
+
+* Users can make posts to the group (activity and hotel suggestions, post about upcoming weather, etc.).
+
+* Itinerary will update when time-based events pass. (Firebase Timestamp)
+
 ## Additional Resources
- 
-* Socket.IO (Low latency web chat)
  
 * Open Weather API
  
@@ -65,3 +63,4 @@ Have you ever been on vacation/trip and wasted precious relaxation time due to m
  
 * Google Maps API
  
+* Firebase (timestamp, Cloud Messaging)
