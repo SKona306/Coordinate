@@ -80,7 +80,7 @@ const NewItineraryItemsForm = (props) => {
                 type='time'
                 value={inputField.time} 
                 onChange={event => handleChangeInput(index, event)}/>
-              <IconButton onClick={() => handleRemoveFields(index)}>
+              <IconButton onClick={() => handleRemoveFields(index)} disabled={index === 0}>
                 <RemoveCircle />
               </IconButton>
               <IconButton onClick={() => handleAddFields()}>
