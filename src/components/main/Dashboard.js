@@ -36,9 +36,6 @@ const Dashboard = () => {
     }
   }
 
-  const handleAddItineraryClick = () => {
-    setitineraryFormPageVisble(true);
-  }
 
   useEffect(() => {
     if(!currentUser) {
@@ -67,8 +64,8 @@ const Dashboard = () => {
         <MainHeader 
           profilePageVisible = {setProfilePageVisible}/>
         {error && <Alert variant='error'>{error}</Alert>}
-        <Itinerary />
-        <button className='addItineraryItem' onClick={handleAddItineraryClick}>Add Iteneray Items</button>
+        <Itinerary 
+          handleAddItineraryItems = {setitineraryFormPageVisble}/>
         <Button variant='contained' color='secondary' onClick={handleClick}>Log Out</Button>
       </React.Fragment>
       
