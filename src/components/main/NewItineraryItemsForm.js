@@ -1,7 +1,7 @@
 import { Button, Container, Paper, TextareaAutosize, TextField, Typography, IconButton } from '@mui/material';
 import React, { useState } from 'react'
 import MainHeader from './MainHeader';
-import { itineraryItemsDatabase } from './StaticDatabase';
+import { addItemsToItinerary } from './StaticDatabase';
 import { RemoveCircle, Add, AddCircle } from '@mui/icons-material';
 
 const NewItineraryItemsForm = (props) => {
@@ -17,7 +17,7 @@ const NewItineraryItemsForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputValues)
+    addItemsToItinerary(inputValues)
   }
 
   const handleAddFields = () => {
@@ -40,10 +40,10 @@ const NewItineraryItemsForm = (props) => {
       <Paper elevation={0}>
         <Container>
           <Paper elevation={1} sx={{margin: '1rem'}}>
-            <Typography variant='h1' fontWeight='bolder' sx={{fontSize: '2rem', textAlign: 'center'}}>
+            <Typography variant='h1' fontWeight='bolder' fontFamily="'Quicksand', sans-serif" sx={{fontSize: '2rem', textAlign: 'center'}}>
               Itinerary Form
             </Typography>
-            <Typography variant='h6' sx={{textAlign: 'center'}}>
+            <Typography variant='h6' fontFamily="'Quicksand', sans-serif" sx={{textAlign: 'center'}}>
               Add itinerary items below
             </Typography>
             <hr style={{maxWidth: '60vw'}}/>
