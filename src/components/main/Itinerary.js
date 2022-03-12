@@ -1,33 +1,37 @@
+import { Container, Paper, Typography, Button } from '@mui/material';
 import React from 'react'
 import { itineraryItemsDatabase } from './StaticDatabase'
 
 
 
-const Itinerary = () => {
-  let database = itineraryItemsDatabase;
+const Itinerary = (props) => {
+  const addItineraryItem = props.handleAddItineraryItems
+  const database = itineraryItemsDatabase;
+
+  const handleAddItineraryClick = () => {
+    addItineraryItem(true);
+  }
+
+
+
   return (
     <React.Fragment>
-      <div className='itinerary-wrapper' style={{border:'1px solid black'}}>
-        <div className='itinerary-title' style={{display:'flex', justifyContent:'center', alignItems:'center', paddingBottom:'0', margin:'0' }}>
-          <h1>Your Itinerary:</h1>
-        </div>
-        <hr style={{display:'flex', justifyContent:'center', alignItems:'center', width: '50%', marginTop:'5px'}} />
-        <div className='itinerary-items'>
-          {database.map((item, index) => {
-            return (
-              <div className='item'>
-                <ol>
-                  <li key={index}>
-                    <h3>{item.label} : {item.category}</h3>
-                    <p>Due By: {item.day} at {item.time}</p>
-                    <p>Click to see more details!</p>
-                  </li>
-                </ol>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+      <Container>
+        <Paper elevation={0} sx={{margin: '1rem'}}>
+        <Container>
+          <Paper elevation={1}>
+            <Typography variant='h1' sx={{fontSize: '2rem', textAlign: 'center', margin:'1rem'}}>
+              Your Itinerary
+            </Typography>
+            <Button 
+              variant='contained' 
+              onClick={handleAddItineraryClick}
+              sx={{alignItems: 'center'}}
+              >Add Iteneray Items</Button>
+          </Paper>
+        </Container>
+      </Paper>
+      </Container>
     </React.Fragment>
   )
 }

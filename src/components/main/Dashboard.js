@@ -14,8 +14,16 @@ const Dashboard = () => {
   const [ProfilePageVisible, setProfilePageVisible] = useState(false)
   const [error, setError] = useState('')
   const [user, setUser] = useState()
-  const { logout, currentUser } = useAuth()
+  const { currentUser } = useAuth()
   let navigate = useNavigate()
+
+  useEffect(() => {
+      if(!currentUser) {
+        navigate("/")
+      } else {
+        fetchUserData(currentUser.uid)
+      }
+    }, [currentUser]) 
 
   const fetchUserData = async(uid) => {
     try {
@@ -24,27 +32,9 @@ const Dashboard = () => {
       const userData = doc.docs[0].data();
       setUser(userData);
     } catch(error) {
-      return error.message;
+      console.log(error.message);
     }
   }  
-
-  const handleClick = async() => {
-    try {
-      await logout()
-    } catch {
-      setError('Failed to logout')
-    }
-  }
-
-
-  useEffect(() => {
-    if(!currentUser) {
-      navigate("/")
-    } else {
-      fetchUserData(currentUser.uid)
-    }
-  }, [currentUser]) 
-
 
   // if(currentUser && user.name === '') { //when ready for production add: && user.name === ''
   //   return (
@@ -66,7 +56,6 @@ const Dashboard = () => {
         {error && <Alert variant='error'>{error}</Alert>}
         <Itinerary 
           handleAddItineraryItems = {setitineraryFormPageVisble}/>
-        <Button variant='contained' color='secondary' onClick={handleClick}>Log Out</Button>
       </React.Fragment>
       
     )
