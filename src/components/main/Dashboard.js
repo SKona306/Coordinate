@@ -1,21 +1,24 @@
-import { Alert, Button } from '@mui/material';
+import { Alert } from '@mui/material';
 import React, { useState, useEffect } from 'react'
 import Itinerary from './Itinerary';
 import NewItineraryItemsForm from './NewItineraryItemsForm';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { query, collection, where, getDocs } from 'firebase/firestore';
+import { onSnapshot, doc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import ProfileCreateForm from './ProfileCreateForm';
 import MainHeader from './MainHeader';
-import Header from '../home/Header';
+import ProfileModal from './ProfileModal';
+
 
 const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);
-  const [ProfilePageVisible, setProfilePageVisible] = useState(false)
   const [error, setError] = useState('')
   const [user, setUser] = useState()
+  const [open, setOpen] = useState(false);
   const { currentUser } = useAuth()
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false)
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -27,15 +30,13 @@ const Dashboard = () => {
     }, [currentUser]) 
 
   const fetchUserData = async(uid) => {
-    try {
-      const q = query(collection(db, 'users'), where("uid", "==", uid));
-      const doc = await getDocs(q);
-      const userData = doc.docs[0].data();
-      setUser(userData);
-    } catch(error) {
-      console.log(error.message);
-    }
-  }  
+    onSnapshot(doc(db, "users", uid), (doc) => {
+      const user = doc.data()
+      setUser(user)
+    }, (error) => {
+      setError(error.message)
+    });
+  }
 
   // if(currentUser && user.name === '') { //when ready for production add: && user.name === ''
   //   return (
@@ -53,10 +54,14 @@ const Dashboard = () => {
     return (
       <React.Fragment>
         <MainHeader 
-          profilePageVisible = {setProfilePageVisible}/>
+          handleOpenModalClick = {handleOpen}/>
         {error && <Alert variant='error'>{error}</Alert>}
         <Itinerary 
           handleAddItineraryItems = {setitineraryFormPageVisble}/>
+          <ProfileModal 
+            modalOpenControl = {open}
+            handleCloseModalClick = {handleClose}
+            userData = {user}/>
       </React.Fragment>
       
     )
