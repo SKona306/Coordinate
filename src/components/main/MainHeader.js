@@ -19,7 +19,7 @@ const MainHeader = (props) => {
 
   return (
     <React.Fragment>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1}}>
       <AppBar position="static">
         <Toolbar sx={{background: '#046582'}}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -27,7 +27,7 @@ const MainHeader = (props) => {
               <h1 style={{fontSize: '3rem', fontFamily: "'Pacifico', cursive", padding: '0', margin:'5px'}}>Coordinate</h1>
             </div>
           </Typography>
-          <Button variant='contained' color='secondary' onClick={handleLogoutClick}>Log Out</Button>
+          <Button variant='contained' color='secondary' sx={{fontFamily: "'Quicksand', sans-serif"}} onClick={handleLogoutClick}>Log Out</Button>
           <IconButton
             onClick={props.profilePageVisible}>
             <PersonIcon sx={{fontSize: '40px', color: 'white'}} />
