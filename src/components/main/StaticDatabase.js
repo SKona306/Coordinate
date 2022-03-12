@@ -1,5 +1,10 @@
-let itineraryItemsDatabase = [{label: 'Hertz Rental Car', details: 'the pickup is at 9 am, $25 per day', day: '2022-05-22', time: '01:30 am' }]
+let itineraryItemsDatabase = [{label: 'Hertz Rental Car', details: 'We are renting a white nissan altima, the reservation is under James. The rental will be $27 a day', day: '2022-05-22', time: '01:30'}];
 
-let toDoDatabase = []
+let toDoDatabase = [];
 
-export { itineraryItemsDatabase, toDoDatabase}
+const addItemsToItinerary = (itineraryArray) => {
+  itineraryItemsDatabase.push(itineraryArray[0])
+
+}
+
+export { itineraryItemsDatabase, toDoDatabase, addItemsToItinerary}
