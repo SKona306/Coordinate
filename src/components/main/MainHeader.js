@@ -29,7 +29,7 @@ const MainHeader = (props) => {
           </Typography>
           <Button variant='contained' color='secondary' sx={{fontFamily: "'Quicksand', sans-serif"}} onClick={handleLogoutClick}>Log Out</Button>
           <IconButton
-            onClick={props.profilePageVisible}>
+            onClick={props.handleOpenModalClick}>
             <PersonIcon sx={{fontSize: '40px', color: 'white'}} />
           </IconButton>
         </Toolbar>
