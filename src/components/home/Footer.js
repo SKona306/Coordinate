@@ -14,10 +14,10 @@ const Footer = () => {
         color="white"
         height='auto'
         width='100vw'
-        
+        sx={{fontFamily:"'Quicksand', sans-serif", fontWeight:'bold'}}
       >
         <Container maxWidth="lg">
-          <Grid container spacing={5}>
+          <Grid container spacing={5} >
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Coordinate Inc.</Box>
               <Box>

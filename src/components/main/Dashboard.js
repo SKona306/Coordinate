@@ -8,6 +8,7 @@ import { query, collection, where, getDocs } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import ProfileCreateForm from './ProfileCreateForm';
 import MainHeader from './MainHeader';
+import Header from '../home/Header';
 
 const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);

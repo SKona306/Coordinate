@@ -16,7 +16,8 @@ const Header = () => {
       paddingBottom:"5rem",
       paddingTop: '2rem',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      fontFamily: " 'Quicksand', sans-serif"
     },
     centerElements : {
       display: 'flex',
@@ -29,13 +30,14 @@ const Header = () => {
       justifyContent: 'center',
       alignItems: 'center',
       color: 'white',
-      margin: '0.5rem'
+      margin: '0.5rem',
+      width: '50vw'
     }
   }
 
   return (
     <React.Fragment>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, width: '100vw' }} >
       <AppBar position="static">
         <Toolbar sx={{background: '#046582'}}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -43,19 +45,25 @@ const Header = () => {
               <h1 style={{fontSize: '3rem', fontFamily: "'Pacifico', cursive", padding: '0', margin:'5px'}}>Coordinate</h1>
             </div>
           </Typography>
-          <Button color="inherit" sx={{backgroundColor: '#F39189'}} onClick={() => navigate("/signup")} >Sign Up</Button>
-          <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
+          <Button 
+            color="inherit" 
+            sx={{backgroundColor: '#F39189', fontFamily:"'Quicksand', sans-serif", fontWeight:'bold'}} 
+            onClick={() => navigate("/signup")} >Sign Up</Button>
+          <Button 
+            color="inherit" 
+            sx={{fontFamily:"'Quicksand', sans-serif", fontWeight:'bold'}}
+            onClick={() => navigate("/login")}>Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
       
-      <div className='splash-page-main'>
+      <div className='splash-page-main' style={{width: '100vw'}}>
         <CssBaseline />
-        <Paper style={styles.paperBackgroundImage} square>
+        <Paper style={styles.paperBackgroundImage} square >
           <Container style={styles.centerElements}>
             <Paper style={{marginTop: '6rem', background: "linear-gradient(150deg, #046582, #6b73a9, #c17aa8, #f39189)"}}>
               <Container>
-                <div className='description-card' style={styles.descriptionCard}>
+                <div style={styles.descriptionCard}>
                   <h1 style={{marginBottom: '0.5rem'}}>Relaxation Reimagined</h1>
                   <h3 style={{width: '50%', margin: '0', textAlign: 'center'}}>At Coordinate we strive to maximize your relaxation time by taking care of the details. Join us in our mission to create a more relaxed world! </h3>
                   <Button variant='contained' color='secondary' sx={{margin: '1.5rem', backgroundColor: '#F39189'}} onClick={() => navigate("/signup")}>Sign Up</Button>
