@@ -2,9 +2,11 @@ let itineraryItemsDatabase = [{label: 'Hertz Rental Car', details: 'We are renti
 
 let toDoDatabase = [];
 
+let friendsDatabase = [{name: "James", id:"012351"}, {name: "roger", id: "487945"}]
+
 const addItemsToItinerary = (itineraryArray) => {
   itineraryItemsDatabase.push(itineraryArray[0])
 
 }
 
-export { itineraryItemsDatabase, toDoDatabase, addItemsToItinerary}
+export { itineraryItemsDatabase, toDoDatabase, friendsDatabase, addItemsToItinerary}
