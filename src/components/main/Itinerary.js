@@ -9,12 +9,9 @@ const Itinerary = (props) => {
   const addItineraryItem = props.handleAddItineraryItems
   const database = itineraryItemsDatabase;
 
-  console.log(database)
-
   const handleAddItineraryClick = () => {
     addItineraryItem(true);
   }
-
 
   return (
     <React.Fragment>
