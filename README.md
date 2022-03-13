@@ -1,51 +1,96 @@
-# Research and Planning
+# Coordinate
 
-## Saturday, 01/23  
+### A React app that tracks all the details of a vacation
+### By Shaun Kent
 
-* 2:00 - 2:30 Prioritize project into MVP and stretch goals
+## Technologies Used
 
-* 2:30 - 3:30 Research and determine which stack would be best for this project. Decided on using MERN over MEAN or C#/.NET for practice with React.
+* HTML
+* CSS
+* Javascript
+* React
+* Firebase (firestore/authentication)
+* MUI
 
-* 3:30 - 4:00 Researched realtime databases and how to implement them in a project. Finished basic outline of proposal with rough estimate of technologies needed
+## Description
 
-## Saturday, 1/29
+Have you ever been on vacation/trip and wasted precious relaxation time due to miscommunication/misinformation? This app works to maximize your time by creating a centralized place where you can find all the necessary information about your trip and share it with others! Users can create groups and share items(Itinerary, to-do, flight info, etc.) to others in the group making sure everyone is up to date on the details, thus maximizing your relaxation time. 
 
-* 2:00 - 4:00 Researched Firebase database, read quick start documentation for realtime databases, authentication and timeStamp and decided to use firebase instead of mongoDB for database.
+## Component Diagram
+
+![component diagram](./capstone-component-diagram.drawio%20(1).png)
+
+## Database Structure
+
+![component diagram](./coordinatedbdiagram.png)
+
+## Setup Firebase (firestore/authentication)
+
+* (optional) Currently the application is connected to a development database in firestore. Follow instructions below to setup your own firebase.
+
+* navigate to `https://firebase.google.com/`
+
+* Click the `Get Started` button and create an account or sign in using one of the providers available.
+
+* Once completed add a project and name it.
+
+* Next register your app by selecting the web button `</>`
+
+* Copy the firebaseConfig given by firebase. 
+
+* Replace firebase config with your config in firebase.js file in services directory
+
+* Initialize database by clicling `Firestore Database` then click `Get Started`. Setup firestore in production mode.
+
+* Once created click the Rules tab and change the rules to `allow read, write: if true;`
+
+* Initialize firebase authentication by clicking `Authentication` then click `Get Started`. Choose Email/Password then enable and save
+
+* Firebase database and authentication should now be setup. You are ready to continue on the rest of setup.
+
+## Setup/Instillation Requirements
+
+* Go to this link: `https://github.com/SKona306/Coordinate`
+
+* In the right hand corner click the green button that says `code`
+
+* Copy the HTTPS link
+
+* Open a command prompt and traverse to the directory you want the project stored in
+
+* In command line enter `git clone [copied HTTPS link]`
+
+* Open project in code editor of choice
+
+* To install dependencies travel to the root directory then enter command `npm install`.
+
+* To start app enter `npm start` in command line
+
+* To exit live server press CTRL + `c`
 
 
-## Saturday 2/12
+## Known Bugs
 
-* 2:00-3:20 Watched video on firebase React full CRUD structure using React-Router-Dom, also read https://www.freecodecamp.org/news/how-to-build-a-todo-application-using-reactjs-and-firebase/ to see compare different ways to structure application. Broke down react firebase template here:https://github.com/GiovaniBiagi/cra-template-firebase using similar project structure.
+* Background images load in slowly after component mounts; issue is likely that images are too large in size
 
-* 3:20-4:00 Planned out and created component diagram for project
+## Features in the works
 
-## Sunday 2/27
+* Create functionality to add itinerary and todo items to trips collection in firestore
 
-* 9:30-1:00 Watched multiple videos on how to use MUI for styling. Specifically looking at how to use container, paper, card and other styled components and how to add custom css properties. Read through MUI docs to see how to customize css of pre made components. link: https://www.youtube.com/watch?v=Xoz31I1FuiY , https://www.youtube.com/watch?v=o1chMISeTC0
+* Ability to add friends to friends array in users collection
 
+* Ability to message friends using firestore cloud messaging
 
-## Monday 2/28
+* Add weather component that calls OpenWeather API and displays a 7 day forecast
 
-* 4:00-4:45: Watched video on how to setup firebase authentication using a custom auth context to store current user and using react router with private routes. link: https://www.youtube.com/watch?v=PKwu15ldZ7k
+* Add flightTracker API to display real time flight info
 
-* 4:45-5:15: Watched youtube video explaining how the new syntax for version 6 speicifically focusing on how useHistory has changed to useNavigate and Switch is changed to Routes. https://www.youtube.com/watch?v=UjHT_NKR_gU
+* give itinerary and todo items ability to be disabled when time stamp has passed
 
-## Wednesday 3/2
+## License 
 
-* 7-7:30: Read log rocket article which shows how to create a user profile in the database as soon as the user registers with the app. link: https://blog.logrocket.com/user-authentication-firebase-react-apps/
+[MIT](https://choosealicense.com/licenses/mit/)
 
-* 7:30-8:30: read firebase documentation to make sure that nosql will work for project. Decided to use firestore with by referencing other collections. Will need to find a solution for child parent delete functionality found in sql. Designed Database schema using Lucid. 
+## Contact Information
 
-## Sunday 3/6 
-
-9:30-12:00: watch youtube videos about cleanup function for useEffect hook. also looked at some documentation to determine how to fix the memory leak in the application that is a result of the useEffect and onAuthStateChanged method. links: https://www.loginradius.com/blog/async/how-to-fix-memory-leaks-in-react/, https://www.youtube.com/watch?v=0ZJgIjIuY7U, https://www.youtube.com/watch?v=gv9ugDJ1ynU, https://www.youtube.com/watch?v=UVhIMwHDS7k
-
-## Tuesday 3/8
-
-11:00-12:00: Ran into an issue firestore database when user profile is created during signup the only id that is given is uid but the document id is randomly generated. This causes issues when using updateDoc firestore method as it requires the doc id instead of the uid created during signup. Watched youtube video playlist that covers v9 firestore syntax and the difference in using addDoc and setDoc. link: https://www.youtube.com/watch?v=ig91zc-ERSE&list=PLqFvlDFoiZ-2SAX7YXCYtb28K4IooCIlS 
-
-12:00-12:40: Read over firestore documentation that covers how to add data to firestore. Specifically looked at the difference between addDoc which generates a random id and setDoc which allows the developer to assign the specific id needed. This allowed me to set the document id as the user uid making querying later on in app easier. link: https://firebase.google.com/docs/firestore/manage-data/add-data#update-data
-
-7:40-8:00: watch youtube video explaining how attatch onclick functionality to mui icons. Link: https://www.youtube.com/watch?v=AVonkBWYeDU
-
-8:00-8:30: read documentation about buttonIcon which allows the developer to use an icon as a button. link: https://mui.com/api/icon-button/. Read github thread about how to add onClick event handler to icon button link: https://github.com/mui/material-ui/issues/1340
+* shaunkent81@gmail.com
