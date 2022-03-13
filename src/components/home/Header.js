@@ -31,7 +31,7 @@ const Header = () => {
       alignItems: 'center',
       color: 'white',
       margin: '0.5rem',
-      width: '50vw'
+      width: 'auto'
     }
   }
 

@@ -56,7 +56,7 @@ const SplashPage = () => {
               <Container>
                 <div className='description-card'>
                   <h1 style={{marginBottom: '0.5rem'}}>Our Mission</h1>
-                  <h3 style={{width: '50%', marginTop: '0'}}>We here at coordinate believe that life is stressful as is and you shouldn't have to worry about the details when you are one vacaction. Thats where we come in, help us help you make the most of your trip. We strive to create an experience that maximizes your total down time. </h3>
+                  <h3 style={{width: '50%', marginTop: '0'}}>We here at coordinate believe that life is stressful as is. You shouldn't have to worry about the details when you are on vacaction. Thats where we come in, help us help you make the most of your trip. We strive to create an experience that maximizes your total down time. </h3>
                 </div>
               </Container>
             </Paper>
