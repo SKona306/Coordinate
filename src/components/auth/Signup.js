@@ -31,7 +31,7 @@ const Signup = () => {
         uid: user.uid,
         name: '',
         email: user.email,
-        trips: [],
+        trips: '',
         friendsList: [],
         friendRequests: []
       })
