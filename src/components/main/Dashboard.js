@@ -9,10 +9,13 @@ import { db } from '../../services/firebase';
 import ProfileCreateForm from './ProfileCreateForm';
 import MainHeader from './MainHeader';
 import ProfileModal from './ProfileModal';
+import NewToDoForm from './NewToDoForm';
+import TodoList from './TodoList';
 
 
 const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);
+  const [toDoFormPageVisible, setTodoFormPageVisible] = useState(false)
   const [error, setError] = useState('')
   const [user, setUser] = useState()
   const [open, setOpen] = useState(false);
@@ -44,6 +47,13 @@ const Dashboard = () => {
   //   )
   // }
 
+  if(toDoFormPageVisible === true) {
+    return (
+    <NewToDoForm 
+      todoFormVisibleControl = {setTodoFormPageVisible}/>
+    )
+  }
+
   if(itineraryFormPageVisible === true) {
     return (
       <NewItineraryItemsForm 
@@ -62,6 +72,8 @@ const Dashboard = () => {
             modalOpenControl = {open}
             handleCloseModalClick = {handleClose}
             userData = {user}/>
+        <TodoList 
+          handleAddToDoItemClick = {setTodoFormPageVisible}/>
       </React.Fragment>
       
     )
