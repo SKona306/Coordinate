@@ -1,4 +1,4 @@
-import { Alert } from '@mui/material';
+import { Alert, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react'
 import Itinerary from './Itinerary';
 import NewItineraryItemsForm from './NewItineraryItemsForm';
@@ -11,13 +11,15 @@ import MainHeader from './MainHeader';
 import ProfileModal from './ProfileModal';
 import NewToDoForm from './NewToDoForm';
 import TodoList from './TodoList';
+import TripCreateForm from './TripCreateForm';
 
 
 const Dashboard = () => {
   const [itineraryFormPageVisible, setitineraryFormPageVisble] = useState(false);
   const [toDoFormPageVisible, setTodoFormPageVisible] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('')
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(null)
   const [open, setOpen] = useState(false);
   const { currentUser } = useAuth()
   const handleOpen = () => setOpen(true);
@@ -25,27 +27,31 @@ const Dashboard = () => {
   let navigate = useNavigate()
 
   useEffect(() => {
-      if(!currentUser) {
-        navigate("/")
-      } else {
-        fetchUserData(currentUser.uid)
-      }
-    }, [currentUser]) 
-
-  const fetchUserData = async(uid) => {
-    onSnapshot(doc(db, "users", uid), (doc) => {
-      const user = doc.data()
-      setUser(user)
-    }, (error) => {
-      setError(error.message)
-    });
+    if(!currentUser) {
+      navigate("/")
+    } else {
+      setLoading(true)
+      onSnapshot(doc(db, "users", currentUser.uid), (doc) => {
+        const user = doc.data()
+        setUser(user)
+        setLoading(false)
+      }, (error) => {
+        setError(error.message)
+      })
+    }
+  }, [currentUser]) 
+  
+  if(user?.name === '') { //when ready for production add: && user.name === ''
+    return (
+      <ProfileCreateForm />
+    )
   }
 
-  // if(currentUser && user.name === '') { //when ready for production add: && user.name === ''
-  //   return (
-  //     <ProfileCreateForm />
-  //   )
-  // }
+  if(user?.trips.length === 0) {
+    return (
+      <TripCreateForm />
+    )
+  }
 
   if(toDoFormPageVisible === true) {
     return (
@@ -63,17 +69,26 @@ const Dashboard = () => {
   } else {
     return (
       <React.Fragment>
-        <MainHeader 
-          handleOpenModalClick = {handleOpen}/>
-        {error && <Alert variant='error'>{error}</Alert>}
-        <Itinerary 
-          handleAddItineraryItems = {setitineraryFormPageVisble}/>
-          <ProfileModal 
-            modalOpenControl = {open}
-            handleCloseModalClick = {handleClose}
-            userData = {user}/>
-        <TodoList 
-          handleAddToDoItemClick = {setTodoFormPageVisible}/>
+        {loading ? (
+          <Typography>Loading...</Typography>
+        ) : (
+          <div>
+            <MainHeader 
+              handleOpenModalClick = {handleOpen}/>
+            {error && <Alert variant='error'>{error}</Alert>}
+            <Itinerary 
+              handleAddItineraryItems = {setitineraryFormPageVisble}/>
+            <ProfileModal 
+              modalOpenControl = {open}
+              handleCloseModalClick = {handleClose}
+              userData = {user}
+              isDataLoading = {loading}/>
+            <TodoList 
+              handleAddToDoItemClick = {setTodoFormPageVisible}/>
+          </div>
+          
+        )}
+        
       </React.Fragment>
       
     )

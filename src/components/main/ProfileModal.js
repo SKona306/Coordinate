@@ -19,29 +19,35 @@ const ProfileModal = (props) => {
   };
 
   return (
-    <div>
-    <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
-      open={props.modalOpenControl}
-      onClose={props.handleCloseModalClick}
-      closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500,
-      }}
-    >
+    <>
+    {props.isDataLoading ? (
+      <Typography>
+        Loading...
+      </Typography>
+    ) : (
+      <div>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={props.modalOpenControl}
+        onClose={props.handleCloseModalClick}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
       <Fade in={props.modalOpenControl}>
         <Box sx={style}>
           <Typography id="transition-modal-title" variant="h4" component="h2">
-            Profile:
+            Profile: 
           </Typography>
           <hr />
           <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-            Name goes here{/* Name: {props.userData.name} */}
+            Name: {props.userData?.name}
           </Typography>
           <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-            Email goes Here{/* Email {props.userData.email} */}
+            Email: {props.userData?.email}
           </Typography>
           <Button 
             variant="contained" 
@@ -61,16 +67,19 @@ const ProfileModal = (props) => {
               </div>
             )
           })}
-          <Button
-            variant="contained"
-            fullWidth
-            sx={{mt: 2}}
-            endIcon={<Add />}>Add Friends</Button>
+            <Button
+              variant="contained"
+              fullWidth
+              sx={{mt: 2}}
+              endIcon={<Add />}>Add Friends</Button>
         </Box>
       </Fade>
-    </Modal>
-  </div>
+      </Modal>
+      </div>
+    )}
+  </>
   )
+
 }
 
 export default ProfileModal
