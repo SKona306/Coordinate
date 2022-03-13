@@ -7,7 +7,7 @@ import { RemoveCircle, Add, AddCircle } from '@mui/icons-material';
 const NewItineraryItemsForm = (props) => {
   const setFormVisible = props.formVisibleControl;
 
-  const [inputValues, setInputValues] = useState([{label: '', details: '', day: '', time: '' }])
+  const [inputValues, setInputValues] = useState([{label: '', details: '', day: '', time: '' }, {label: '', details: '', day: '', time: '' }, {label: '', details: '', day: '', time: '' }])
 
   const handleChangeInput = (index, event) => {
     const values = [...inputValues];
@@ -17,7 +17,8 @@ const NewItineraryItemsForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addItemsToItinerary(inputValues)
+    addItemsToItinerary(inputValues);
+    setFormVisible(false);
   }
 
   const handleAddFields = () => {
@@ -37,9 +38,8 @@ const NewItineraryItemsForm = (props) => {
   return (
     <React.Fragment>
       <MainHeader />
-      <Paper elevation={0}>
         <Container>
-          <Paper elevation={1} sx={{margin: '1rem'}}>
+          <Paper elevation={5} sx={{margin: '1rem'}}>
             <Typography variant='h1' fontWeight='bolder' fontFamily="'Quicksand', sans-serif" sx={{fontSize: '2rem', textAlign: 'center'}}>
               Itinerary Form
             </Typography>
@@ -95,7 +95,6 @@ const NewItineraryItemsForm = (props) => {
           </form>
           </Paper>
         </Container>
-      </Paper>
     </React.Fragment>
   )
 }
