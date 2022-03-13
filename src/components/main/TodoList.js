@@ -4,11 +4,6 @@ import React from 'react'
 import { toDoDatabase } from './StaticDatabase'
 
 const TodoList = (props) => {
-
-  const handleChecked = (index) => {
-    
-  }
-
   const handleAddTodoClick = () => {
     props.handleAddToDoItemClick(true)
   }
@@ -26,13 +21,12 @@ const TodoList = (props) => {
             return (
               <div key={index} >
                 <FormControl component="fieldset">
-                <FormGroup aria-label="position" column>
+                <FormGroup aria-label="position" column='true'>
                   <FormControlLabel
                     value="top"
                     control={<Checkbox />}
                     label={item.label + ' | ' + item.details + ' | ' + "Due by: " + item.date}
                     labelPlacement="end"
-                    onChange={(index) => handleChecked(index)}
                     disabled={item.completed}
                   />
                 </FormGroup>

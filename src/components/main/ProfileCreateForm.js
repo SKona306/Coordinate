@@ -6,15 +6,13 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import { useAuth } from '../../contexts/AuthContext';
 
-const ProfileCreateForm = () => {
+const ProfileCreateForm = (props) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const { currentUser } = useAuth()
   const [error, setError] = useState('')
 
   const handleClick = async() => {
-    console.log(email);
-    console.log(name)
     try {
       const userRef = doc(db, "users", currentUser.uid);
       await updateDoc(userRef, {
