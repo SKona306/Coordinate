@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container, Paper, TextField, Typography, Button, Alert } from '@mui/material'
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { useAuth } from '../../contexts/AuthContext';
-import { doc, setDoc, writeBatch } from 'firebase/firestore';
+import { doc, writeBatch } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 
 const TripCreateForm = () => {
