@@ -1,39 +1,26 @@
 import { Container, Grid, Paper, CssBaseline} from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './SplashPage.css'
-import secondBG from '../../assets/images/secondSplashpageBG.jpg'
+import Header from './Header'
+import Footer from './Footer'
+import { useAuth } from '../../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 
 const SplashPage = () => {
+  const { currentUser } = useAuth()
+  const navigate = useNavigate();
 
-
-  const styles = {
-    paperBackgroundImage : {
-      backgroundImage: `url(${secondBG})`,
-      height: 'auto',
-      minHeight: '58vh',
-      width: '100vw',
-      paddingBottom:"5rem",
-      paddingTop: '2rem',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
-    },
-    centerElements : {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    descriptionCard: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      color: 'white'
+  useEffect(() => {
+    if(currentUser) {
+      navigate("/dashboard")
     }
-  }
+  })
+
   return (
     <React.Fragment>
-      <Container style={{minHeight: '50vh'}}>
+      <Header />
+      <Container sx={{minHeight: '50vh', fontFamily:"'Quicksand', sans-serif", fontWeight:'bold'}}>
         <div className='lines'>
           <h2 style={{textAlign: 'center', fontSize: '2.5rem', marginTop: '4rem'}}>How Coordinate Works</h2>
         </div>
@@ -43,7 +30,7 @@ const SplashPage = () => {
         <div className='steps-cards'>
           <Grid container spacing={2} style={{marginBottom: '4rem'}}>
           <Grid item xs={3}>
-            <h1 style={{color: '#F39189'}}>Step One</h1>
+            <h1 style={{color: '#F39189', fontWeight:'bolder'}}>Step One</h1>
             <p>If you have an upcoming trip or are looking to plan a future trip, sign up for coordinate and let us take care of the details.</p>
           </Grid>
           <Grid item xs={3}>
@@ -63,19 +50,20 @@ const SplashPage = () => {
       </Container>
       <div className='splash-page-main'>
         <CssBaseline />
-        <Paper style={styles.paperBackgroundImage} square>
-          <Container style={styles.centerElements}>
+        <Paper className='paperBackgroundImage' elevation={2} square sx={{width: '100vw', fontFamily: " 'Quicksand', sans-serif"}}>
+          <Container className='centerElements' >
             <Paper style={{marginTop: '6rem', background: "linear-gradient(150deg, #046582, #6b73a9, #c17aa8, #f39189)"}}>
               <Container>
-                <div className='description-card' style={styles.descriptionCard}>
+                <div className='description-card'>
                   <h1 style={{marginBottom: '0.5rem'}}>Our Mission</h1>
-                  <h3 style={{width: '50%', marginTop: '0', textAlign: 'center'}}>We here at coordinate believe that life is stressful as is and you shouldn't have to worry about the details when you are one vacaction. Thats where we come in, help us help you make the most of your trip. We strive to create an experience that maximizes your total down time. </h3>
+                  <h3 style={{width: '50%', marginTop: '0'}}>We here at coordinate believe that life is stressful as is. You shouldn't have to worry about the details when you are on vacaction. Thats where we come in, help us help you make the most of your trip. We strive to create an experience that maximizes your total down time. </h3>
                 </div>
               </Container>
             </Paper>
           </Container>
         </Paper>
       </div>
+      <Footer />
     </React.Fragment>
   )
 }

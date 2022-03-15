@@ -1,54 +1,110 @@
-import { Button, Container, Paper, TextField, Typography } from '@mui/material'
-import React from 'react'
-import signupBG from '../../assets/images/signupBG.jpg'
+import { Button, Container, Paper, TextField, Typography, Alert } from '@mui/material'
+import { Link, useNavigate } from 'react-router-dom';
+import React, {useRef, useState, useEffect} from 'react'
+import { useAuth } from '../../contexts/AuthContext';
+import { doc, setDoc} from 'firebase/firestore'
+import { db } from '../../services/firebase';
+import './AuthStyles.css'
+
 
 const Signup = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+  const {signup, currentUser} = useAuth();
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
 
-  const styles = {
-    signupWrapper: {
-      backgroundImage: `url(${signupBG})`,
-      backgroundSize: '100%',
-      objectFit: 'cover',
-      display: 'flex', 
-      flexDirection: 'row', 
-      height: '100vh',
-      width: '100vw',
-      justifyContent:'center', 
-      alignItems: 'center'
+
+  const handleSubmit = async() => {
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return setError('Passwords do not match')
     }
+    
+    try {
+      setError('')
+      setLoading(true)
+      const res = await signup(emailRef.current.value, passwordRef.current.value)
+      const user = res.user
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        name: '',
+        email: user.email,
+        trips: '',
+        friendsList: [],
+        friendRequests: []
+      })
+      navigate('/dashboard')
+    } catch(error) {
+      setError(error.message);
+    }
+    setLoading(false)
   }
+
+  useEffect(() => {
+    if(currentUser) {
+      navigate("/dashboard")
+    }
+  })
   return (
     <>
-      <div className='sign-up-wrapper' style={styles.signupWrapper}>
+      <div className='sign-up-wrapper' >
         <Container style={{width: '35vw'}}>
-          <Paper variant='outlined' style={{height: 'auto', maxWidth: '600px'}} className='sign-up-form'>
+          <Paper 
+            variant='outlined' 
+            style={{height: 'auto', maxWidth: '600px', minWidth:'450px'  , maxHeight: '650px', }} 
+            >
             <div style={{display: 'flex', flexDirection: 'column', alignContent: 'center', margin: '1rem'}}>
-            <Typography variant='h4' mt={0} pt={0} sx={{textAlign: 'center'}}>
-              <h1>Sign Up</h1>
+            <Typography 
+              variant='h1' 
+              pt={0} 
+              sx={{textAlign: 'center', fontSize: '3rem', margin: '2rem', mt: '1rem'}}
+              >
+              Sign Up
             </Typography>
+            {error && <Alert severity="error" sx={{margin: '1rem', marginTop: '0'}}>{error}</Alert>}
               <form>
-                <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
-                  Email:
-                </Typography>
-                <TextField fullWidth required label='Email' sx={{marginBottom: '1rem'}}/>
-                <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
-                  Password:
-                </Typography>
-                <TextField fullWidth required label='Password' sx={{marginBottom: '1rem'}}/>
-                <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>
-                  Password Confirmation:
-                </Typography>
-                <TextField fullWidth required label='Confirm Password' />
+                <TextField 
+                  fullWidth 
+                  required 
+                  label='Email' 
+                  type='email' 
+                  inputRef={emailRef} 
+                  sx={{marginBottom: '1rem'}}
+                  />
+                <TextField 
+                  fullWidth 
+                  required 
+                  label='Password' 
+                  type='password' 
+                  inputRef={passwordRef} 
+                  sx={{marginBottom: '1rem'}}
+                  />
+                <TextField 
+                  fullWidth 
+                  required 
+                  label='Confirm Password' 
+                  type='password' 
+                  inputRef={confirmPasswordRef} 
+                  />
                 <br />
-                <Button variant='contained' color='secondary'  sx={{backgroundColor: '#F39189', marginTop: '1rem', width: '100%'}}>Register</Button>
+                <Button 
+                  variant='contained' 
+                  color='secondary' 
+                  onClick={handleSubmit} 
+                  disabled={loading} 
+                  sx={{backgroundColor: '#F39189', marginTop: '1rem', width: '100%'}}
+                  >Register</Button>
             </form>
+            <Typography 
+              variant='subtitle1' 
+              sx={{textAlign: 'center', color: 'black'}}
+              >
+              Already have an account? <Link to="/login">Log In</Link>
+            </Typography>
           </div>
           </Paper>
-          <div className='account'>
-            <Typography variant='subtitle1' sx={{textAlign: 'center', color: 'black'}}>
-              Already have an account? Log In
-            </Typography>
-          </div>
         </Container>
         
       </div>

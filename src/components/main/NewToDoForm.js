@@ -1,13 +1,12 @@
-import { Button, Container, Paper, TextareaAutosize, TextField, Typography, IconButton } from '@mui/material';
+import { Add, AddCircle, RemoveCircle } from '@mui/icons-material';
+import { Button, Container, IconButton, Paper, TextareaAutosize, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import MainHeader from './MainHeader';
-import { addItemsToItinerary } from './StaticDatabase';
-import { RemoveCircle, Add, AddCircle } from '@mui/icons-material';
+import { addTodoItems } from './StaticDatabase';
 
-const NewItineraryItemsForm = (props) => {
-  const setFormVisible = props.formVisibleControl;
-
-  const [inputValues, setInputValues] = useState([{label: '', details: '', day: '', time: '' }, {label: '', details: '', day: '', time: '' }, {label: '', details: '', day: '', time: '' }])
+const NewToDoForm = (props) => {
+  const setTodoFormVisible = props.todoFormVisibleControl;
+  const [inputValues, setInputValues] = useState([{label: '', description: '', date: '', completed: false}, {label: '', description: '', date: '', completed: false}, {label: '', description: '', date: '', completed: false}])
 
   const handleChangeInput = (index, event) => {
     const values = [...inputValues];
@@ -17,12 +16,12 @@ const NewItineraryItemsForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addItemsToItinerary(inputValues);
-    setFormVisible(false);
+    addTodoItems(inputValues);
+    setTodoFormVisible(false);
   }
 
   const handleAddFields = () => {
-    setInputValues([...inputValues, {label: '', details: '', day: '', time: '' }])
+    setInputValues([...inputValues, {label: '', description:'', day: '', completed: false}])
   }
 
   const handleRemoveFields = (index) => {
@@ -32,19 +31,19 @@ const NewItineraryItemsForm = (props) => {
   }
 
   const handleHomeClick = () => {
-    setFormVisible(false)
+    setTodoFormVisible(false)
   }
 
   return (
-    <React.Fragment>
+    <>
       <MainHeader />
         <Container>
           <Paper elevation={5} sx={{margin: '1rem'}}>
             <Typography variant='h1' fontWeight='bolder' fontFamily="'Quicksand', sans-serif" sx={{fontSize: '2rem', textAlign: 'center'}}>
-              Itinerary Form
+              Pre-Travel Todo's
             </Typography>
             <Typography variant='h6' fontFamily="'Quicksand', sans-serif" sx={{textAlign: 'center'}}>
-              Add itinerary items below
+              Add todo items below
             </Typography>
             <hr style={{maxWidth: '60vw'}}/>
             <form onSubmit={handleSubmit} >
@@ -54,15 +53,17 @@ const NewItineraryItemsForm = (props) => {
                 name="label"
                 label="Label"
                 variant='filled'
+                required
                 sx={{margin: '1rem' }}
                 value={inputField.label} 
                 onChange={event => handleChangeInput(index, event)}/>
               <div className='styles-textarea' >
-                <TextareaAutosize 
+                <TextareaAutosize
                   name="details"
                   placeholder='Enter details here...'
                   variant='filled'
                   minRows={3.3}
+                  required
                   value={inputField.details} 
                   onChange={event => handleChangeInput(index, event)}/>
               </div>
@@ -70,15 +71,9 @@ const NewItineraryItemsForm = (props) => {
                 name="day"
                 variant='filled'
                 type='date'
+                required
                 sx={{margin: '1rem' }}
                 value={inputField.day} 
-                onChange={event => handleChangeInput(index, event)}/>
-              <TextField 
-                name="time"
-                variant='filled'
-                sx={{margin: '0.3rem' }}
-                type='time'
-                value={inputField.time} 
                 onChange={event => handleChangeInput(index, event)}/>
               <IconButton onClick={() => handleRemoveFields(index)} disabled={index === 0}>
                 <RemoveCircle />
@@ -95,8 +90,8 @@ const NewItineraryItemsForm = (props) => {
           </form>
           </Paper>
         </Container>
-    </React.Fragment>
+    </>
   )
 }
 
-export default NewItineraryItemsForm
+export default NewToDoForm

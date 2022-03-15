@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+}
+
+.center-form {
+  background-image: url('../../assets/images/splashpageBG.jpg');
+  background-size: 110%;
+  background-repeat: no-repeat;
+}

@@ -34,3 +34,30 @@
   height: 20vh;
   
 }
+
+.paperBackgroundImage  {
+  background-Image: url('../../assets/images/secondSplashpageBG.jpg');
+  height: auto;
+  min-Height: 58vh;
+  width: '100vw';
+  padding-Bottom: 5rem;
+  padding-Top: 2rem;
+  background-Repeat: no-repeat;
+  background-Size: cover;
+}
+
+.centerElements {
+  display: flex;
+  justify-Content: center;
+  align-Items: center;
+}
+
+.description-card {
+  display: flex;
+  flex-Direction: column;
+  justify-Content: center;
+  align-Items: center;
+  text-align: center;
+  color: white;
+  width: auto;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Grid, Box, Link } from '@mui/material'
+import { Container, Grid, Box } from '@mui/material'
+import { Link } from 'react-router-dom';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 
@@ -12,10 +13,11 @@ const Footer = () => {
         bgcolor="#6E7582"
         color="white"
         height='auto'
-        
+        width='100vw'
+        sx={{fontFamily:"'Quicksand', sans-serif", fontWeight:'bold'}}
       >
         <Container maxWidth="lg">
-          <Grid container spacing={5}>
+          <Grid container spacing={5} >
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Coordinate Inc.</Box>
               <Box>
@@ -27,12 +29,12 @@ const Footer = () => {
             <Grid item xs={12} sm={4} >
               <Box borderBottom={1}>Account</Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link to='/login' style={{color: 'white'}} >
                   Login
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link to='/signup' style={{color: 'white'}}>
                   Register
                 </Link>
               </Box>
@@ -40,7 +42,7 @@ const Footer = () => {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Contact Us</Box>
               <Box>
-                <p><EmailIcon /> CoordinateUS@coordiante.io</p>
+                <p><EmailIcon />  CoordinateUS@coordiante.io</p>
               </Box>
               <Box>
                 <p><PhoneIcon /> +1(352)-182-1885</p>
