@@ -42,11 +42,10 @@ const Signup = () => {
     setLoading(false)
   }
 
-  useEffect(() => {
-    if(currentUser) {
-      navigate("/dashboard")
-    }
-  })
+  if(currentUser) {
+    navigate("/dashboard")
+  }
+
   return (
     <>
       <div className='sign-up-wrapper' >

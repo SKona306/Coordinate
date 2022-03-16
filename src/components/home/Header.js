@@ -1,7 +1,7 @@
 import { Button, Container, CssBaseline, Paper, Box, AppBar, Toolbar, Typography  } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import splashpagebackground from '../../assets/images/splashpageBG.jpg'
+import compressedbannerone from '../../assets/images/compressedbannerone.jpg'
 
 
 const Header = () => {
@@ -9,7 +9,7 @@ const Header = () => {
 
   const styles = {
     paperBackgroundImage : {
-      backgroundImage: `url(${splashpagebackground})`,
+      backgroundImage: `url(${compressedbannerone})`,
       height: 'auto',
       minHeight: '60vh',
       width: '100vw',
